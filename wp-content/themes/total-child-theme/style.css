@@ -1,0 +1,10 @@
+.shrink-sticky-header #site-logo img {
+    max-height: 120px!important;
+}
+
+.shrink-sticky-header.sticky-header-shrunk #site-logo img {
+    max-height: 90px !important;
+}
+.sticky-header-shrunk #site-header-inner {
+    height: 120px;
+}
