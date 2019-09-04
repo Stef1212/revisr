@@ -5,13 +5,7 @@
  * @package WPSEO\Admin
  */
 
-/**
- * Alerts template variables.
- *
- * @noinspection PhpUnusedLocalVariableInspection
- *
- * @var array
- */
+/** @noinspection PhpUnusedLocalVariableInspection */
 $alerts_data = Yoast_Alerts::get_template_variables();
 
 $notifier = new WPSEO_Configuration_Notifier();

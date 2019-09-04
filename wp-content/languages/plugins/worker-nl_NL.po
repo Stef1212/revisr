@@ -11,7 +11,7 @@ msgstr ""
 "Language: nl\n"
 "Project-Id-Version: Plugins - ManageWP Worker - Development (trunk)\n"
 
-#: functions.php:870
+#: functions.php:875
 msgid "Every 5 Minutes"
 msgstr "Elke 5 minuten"
 
@@ -19,7 +19,7 @@ msgstr "Elke 5 minuten"
 msgid "The automatic login token isn't properly signed. Please contact our support for help."
 msgstr "De automatische-inlogtoken is niet juist ondertekend. Neem contact op met support voor hulp."
 
-#: functions.php:1142
+#: functions.php:1147
 msgid "The site is currently in maintenance mode."
 msgstr "De site is momenteel in de onderhoudsmodus."
 

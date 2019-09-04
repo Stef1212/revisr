@@ -33,17 +33,6 @@ class WPCF7_ContactForm {
 			),
 			'rewrite' => false,
 			'query_var' => false,
-			'public' => false,
-			'capability_type' => 'page',
-			'capabilities' => array(
-				'edit_post' => 'wpcf7_edit_contact_form',
-				'read_post' => 'wpcf7_read_contact_form',
-				'delete_post' => 'wpcf7_delete_contact_form',
-				'edit_posts' => 'wpcf7_edit_contact_forms',
-				'edit_others_posts' => 'wpcf7_edit_contact_forms',
-				'publish_posts' => 'wpcf7_edit_contact_forms',
-				'read_private_posts' => 'wpcf7_edit_contact_forms',
-			),
 		) );
 	}
 
@@ -114,30 +103,24 @@ class WPCF7_ContactForm {
 	public static function get_instance( $post ) {
 		$post = get_post( $post );
 
-		if ( ! $post
-		or self::post_type != get_post_type( $post ) ) {
+		if ( ! $post || self::post_type != get_post_type( $post ) ) {
 			return false;
 		}
 
 		return self::$current = new self( $post );
 	}
 
-	private static function generate_unit_tag( $id = 0 ) {
+	private static function get_unit_tag( $id = 0 ) {
 		static $global_count = 0;
 
 		$global_count += 1;
 
 		if ( in_the_loop() ) {
 			$unit_tag = sprintf( 'wpcf7-f%1$d-p%2$d-o%3$d',
-				absint( $id ),
-				get_the_ID(),
-				$global_count
-			);
+				absint( $id ), get_the_ID(), $global_count );
 		} else {
 			$unit_tag = sprintf( 'wpcf7-f%1$d-o%2$d',
-				absint( $id ),
-				$global_count
-			);
+				absint( $id ), $global_count );
 		}
 
 		return $unit_tag;
@@ -146,8 +129,7 @@ class WPCF7_ContactForm {
 	private function __construct( $post = null ) {
 		$post = get_post( $post );
 
-		if ( $post
-		and self::post_type == get_post_type( $post ) ) {
+		if ( $post && self::post_type == get_post_type( $post ) ) {
 			$this->id = $post->ID;
 			$this->name = $post->post_name;
 			$this->title = $post->post_title;
@@ -234,10 +216,6 @@ class WPCF7_ContactForm {
 		return $this->id;
 	}
 
-	public function unit_tag() {
-		return $this->unit_tag;
-	}
-
 	public function name() {
 		return $this->name;
 	}
@@ -291,7 +269,7 @@ class WPCF7_ContactForm {
 			return false;
 		}
 
-		return $this->unit_tag() === $_POST['_wpcf7_unit_tag'];
+		return $this->unit_tag == $_POST['_wpcf7_unit_tag'];
 	}
 
 	/* Generating Form HTML */
@@ -312,7 +290,7 @@ class WPCF7_ContactForm {
 		}
 
 		if ( $this->is_true( 'subscribers_only' )
-		and ! current_user_can( 'wpcf7_submit', $this->id() ) ) {
+		&& ! current_user_can( 'wpcf7_submit', $this->id() ) ) {
 			$notice = __(
 				"This contact form is available only for logged in users.",
 				'contact-form-7' );
@@ -323,7 +301,7 @@ class WPCF7_ContactForm {
 			return apply_filters( 'wpcf7_subscribers_only_notice', $notice, $this );
 		}
 
-		$this->unit_tag = self::generate_unit_tag( $this->id );
+		$this->unit_tag = self::get_unit_tag( $this->id );
 
 		$lang_tag = str_replace( '_', '-', $this->locale );
 
@@ -335,7 +313,7 @@ class WPCF7_ContactForm {
 			wpcf7_format_atts( array(
 				'role' => 'form',
 				'class' => 'wpcf7',
-				'id' => $this->unit_tag(),
+				'id' => $this->unit_tag,
 				( get_option( 'html_type' ) == 'text/html' ) ? 'lang' : 'xml:lang'
 					=> $lang_tag,
 				'dir' => wpcf7_is_rtl( $this->locale ) ? 'rtl' : 'ltr',
@@ -350,7 +328,7 @@ class WPCF7_ContactForm {
 			$url = substr( $url, 0, -strlen( $frag ) );
 		}
 
-		$url .= '#' . $this->unit_tag();
+		$url .= '#' . $this->unit_tag;
 
 		$url = apply_filters( 'wpcf7_form_action_url', $url );
 
@@ -450,7 +428,7 @@ class WPCF7_ContactForm {
 			'_wpcf7' => $this->id(),
 			'_wpcf7_version' => WPCF7_VERSION,
 			'_wpcf7_locale' => $this->locale(),
-			'_wpcf7_unit_tag' => $this->unit_tag(),
+			'_wpcf7_unit_tag' => $this->unit_tag,
 			'_wpcf7_container_post' => 0,
 		);
 
@@ -458,7 +436,7 @@ class WPCF7_ContactForm {
 			$hidden_fields['_wpcf7_container_post'] = (int) get_the_ID();
 		}
 
-		if ( $this->nonce_is_active() && is_user_logged_in() ) {
+		if ( $this->nonce_is_active() ) {
 			$hidden_fields['_wpnonce'] = wpcf7_create_nonce();
 		}
 
@@ -477,7 +455,6 @@ class WPCF7_ContactForm {
 	}
 
 	public function form_response_output() {
-		$status = 'init';
 		$class = 'wpcf7-response-output';
 		$role = '';
 		$content = '';
@@ -486,10 +463,9 @@ class WPCF7_ContactForm {
 			$role = 'alert';
 
 			$submission = WPCF7_Submission::get_instance();
-			$status = $submission->get_status();
 			$content = $submission->get_response();
 
-			switch ( $status ) {
+			switch ( $submission->get_status() ) {
 				case 'validation_failed':
 					$class .= ' wpcf7-validation-errors';
 					break;
@@ -510,7 +486,7 @@ class WPCF7_ContactForm {
 					break;
 				default:
 					$class .= sprintf( ' wpcf7-custom-%s',
-						preg_replace( '/[^0-9a-z]+/i', '-', $status )
+						preg_replace( '/[^0-9a-z]+/i', '-', $submission->get_status() )
 					);
 			}
 		} else {
@@ -528,7 +504,7 @@ class WPCF7_ContactForm {
 			$atts, esc_html( $content ) );
 
 		$output = apply_filters( 'wpcf7_form_response_output',
-			$output, $class, $content, $this, $status );
+			$output, $class, $content, $this );
 
 		$this->responses_count += 1;
 
@@ -724,7 +700,7 @@ class WPCF7_ContactForm {
 		) );
 
 		if ( $this->is_true( 'subscribers_only' )
-		and ! current_user_can( 'wpcf7_submit', $this->id() ) ) {
+		&& ! current_user_can( 'wpcf7_submit', $this->id() ) ) {
 			$result = array(
 				'contact_form_id' => $this->id(),
 				'status' => 'error',
@@ -792,7 +768,7 @@ class WPCF7_ContactForm {
 					continue;
 				}
 
-				if ( ! $max or $count < (int) $max ) {
+				if ( ! $max || $count < (int) $max ) {
 					$values[] = trim( $matches[2] );
 					$count += 1;
 				}
@@ -833,8 +809,7 @@ class WPCF7_ContactForm {
 	private function upgrade() {
 		$mail = $this->prop( 'mail' );
 
-		if ( is_array( $mail )
-		and ! isset( $mail['recipient'] ) ) {
+		if ( is_array( $mail ) && ! isset( $mail['recipient'] ) ) {
 			$mail['recipient'] = get_option( 'admin_email' );
 		}
 
@@ -940,7 +915,6 @@ class WPCF7_ContactForm {
 				$this->id, $title );
 		}
 
-		return apply_filters( 'wpcf7_contact_form_shortcode',
-			$shortcode, $args, $this );
+		return apply_filters( 'wpcf7_contact_form_shortcode', $shortcode, $args, $this );
 	}
 }

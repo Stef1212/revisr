@@ -1,0 +1,196 @@
+# Translation of Plugins - SMTP Mailer - Development (trunk) in Dutch
+# This file is distributed under the same license as the Plugins - SMTP Mailer - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-05-19 14:05:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: nl\n"
+"Project-Id-Version: Plugins - SMTP Mailer - Development (trunk)\n"
+
+#: main.php:214
+msgid "Error! Nonce Security Check Failed! please save the settings again."
+msgstr "Fout! Nonce beveiligingscontrole mislukt! Bewaar de instellingen opnieuw."
+
+#: main.php:120
+msgid "Error! Nonce Security Check Failed! please send the test email again."
+msgstr "Fout! Nonce beveiligingscontrole mislukt! Verstuur de test e-mail opnieuw."
+
+#: main.php:325
+msgid "Your SMTP Password (The saved password is not shown for security reasons. You need enter it every time you update the settings)."
+msgstr "Je SMTP wachtwoord (het bewaarde wachtwoord wordt niet getoond in verband met veiligheidsredenen. Je moet deze iedere keer invoeren als je de instellingen bijwerkt)."
+
+#: main.php:361
+msgid "As of PHP 5.6 you will get a warning/error if the SSL certificate on the server is not properly configured. You can check this option to disable that default behaviour. Please note that PHP 5.6 made this change for a good reason. So you should get your host to fix the SSL configurations instead of bypassing it"
+msgstr "Sinds PHP 5.6 krijg je een waarschuwing/fout als het SSL-certificaat op de server onjuist is geconfigureerd. Je kan deze optie controleren door het standaard gedrag uit te schakelen. Hou er rekening mee dat PHP 5.6 deze wijziging voor een goede reden gemaakt heeft. Dus je zou je hostingpartij de SSL configuratie moeten laten repareren in plaats van het te negeren"
+
+#: main.php:359
+msgid "Disable SSL Certificate Verification"
+msgstr "SSL verificatie uitschakelen"
+
+#. Author URI of the plugin
+msgid "https://wphowto.net/"
+msgstr "https://wphowto.net/"
+
+#. Author of the plugin
+msgid "naa986"
+msgstr "naa986"
+
+#. Description of the plugin
+msgid "Configure a SMTP server to send email from your WordPress site"
+msgstr "Configureer een SMTP server om je e-mails vanuit WordPress te versturen."
+
+#. Plugin URI of the plugin
+msgid "https://wphowto.net/smtp-mailer-plugin-for-wordpress-1482"
+msgstr "https://wphowto.net/smtp-mailer-plugin-for-wordpress-1482"
+
+#: main.php:388
+msgid "SMTP Mailer plugin cannot send email until you enter your credentials in the settings."
+msgstr "De SMTP Mailer plugin kan geen e-mails versturen zonder dat je jouw instellingen hebt geconfigureerd."
+
+#: main.php:368
+msgid "Save Changes"
+msgstr ""
+"Wijzigingen\n"
+" \n"
+"opslaan"
+
+#: main.php:355
+msgid "The name which will be used as the From Name if it is not supplied to the mail function."
+msgstr "De naam die wordt gebruikt als \"Naam afzender\" als het niet is opgegeven voor de mail-functie."
+
+#: main.php:353
+msgid "From Name"
+msgstr "Naam afzender"
+
+#: main.php:349
+msgid "The email address which will be used as the From Address if it is not supplied to the mail function."
+msgstr "Het e-mailadres dat wordt gebruikt als \"E-mailadres afzender\" als het niet is opgegeven voor de mail-functie."
+
+#: main.php:347
+msgid "From Email Address"
+msgstr "E-mailadres afzender"
+
+#: main.php:343
+msgid "The port which will be used when sending an email (587/465/25). If you choose TLS it should be set to 587. For SSL use port 465 instead."
+msgstr "De poort die wordt gebruikt bij het versturen van een e-mail (587/465/25). Als je TLS kiest moet deze ingesteld zijn op 587. Voor SSL gebruik in plaats daarvan poort 465."
+
+#: main.php:341
+msgid "SMTP Port"
+msgstr "SMTP poort"
+
+#: main.php:336
+msgid "The encryption which will be used when sending an email (recommended: TLS)."
+msgstr "De versleuteling die wordt gebruikt bij het versturen van een e-mail (aangeraden: TLS)."
+
+#: main.php:334
+msgid "No Encryption"
+msgstr "Geen versleuteling"
+
+#: main.php:333
+msgid "SSL"
+msgstr "SSL"
+
+#: main.php:332
+msgid "TLS"
+msgstr "TLS"
+
+#: main.php:329
+msgid "Type of Encryption"
+msgstr "Type versleuteling"
+
+#: main.php:323
+msgid "SMTP Password"
+msgstr "SMTP wachtwoord"
+
+#: main.php:319
+msgid "Your SMTP Username."
+msgstr "Je SMTP gebruikersnaam."
+
+#: main.php:317
+msgid "SMTP Username"
+msgstr "SMTP gebruikersnaam"
+
+#: main.php:312
+msgid "Whether to use SMTP Authentication when sending an email (recommended: True)."
+msgstr "Of SMTP authenticatie gebruikt moet worden voor het versturen van e-mail (aangeraden: Ja)."
+
+#: main.php:310
+msgid "False"
+msgstr "Nee"
+
+#: main.php:309
+msgid "True"
+msgstr "Ja"
+
+#: main.php:306
+msgid "SMTP Authentication"
+msgstr "SMTP authenticatie"
+
+#: main.php:302
+msgid "The SMTP server which will be used to send email. For example: smtp.gmail.com"
+msgstr "De SMTP server die wordt gebruikt voor het versturen van e-mail. Bijvoorbeeld: smtp.gmail.com"
+
+#: main.php:300
+msgid "SMTP Host"
+msgstr "SMTP host"
+
+#: main.php:267
+msgid "Settings Saved!"
+msgstr "Instellingen opgeslagen!"
+
+#: main.php:166
+msgid "Send Email"
+msgstr "E-mail versturen"
+
+#: main.php:159
+msgid "Email body"
+msgstr "E-mail bericht"
+
+#: main.php:157
+msgid "Message"
+msgstr "Bericht"
+
+#: main.php:153
+msgid "Subject of the email"
+msgstr "Onderwerp van de e-mail"
+
+#: main.php:151
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: main.php:147
+msgid "Email address of the recipient"
+msgstr "E-mailadres ontvanger"
+
+#: main.php:145
+msgid "To"
+msgstr "Aan"
+
+#: main.php:82
+msgid "Please visit the <a target=\"_blank\" href=\"%s\">SMTP Mailer</a> documentation page for usage instructions."
+msgstr "Lees de <a target=\"_blank\" href=\"%s\">SMTP Mailer</a> documentatie voor instructies (in het Engels)."
+
+#: main.php:79
+msgid "Server Info"
+msgstr "Serverinformatie"
+
+#: main.php:78
+msgid "Test Email"
+msgstr "Test e-mail"
+
+#: main.php:77
+msgid "General"
+msgstr "Algemeen"
+
+#. Plugin Name of the plugin
+#: main.php:72
+msgid "SMTP Mailer"
+msgstr "SMTP Mailer"
+
+#: main.php:66
+msgid "Settings"
+msgstr "Configuratie"

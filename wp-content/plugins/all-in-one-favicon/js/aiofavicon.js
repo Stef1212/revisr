@@ -70,10 +70,9 @@ jQuery(document).ready(function() {
 (function(jQuery) {
     loadFavicons = function() {
         jQuery.each(Aiofavicon, function(key, value) {
-            var img = jQuery('<img />', {'src': value});
-            img.css({'maxWidth':100});
+            var $imgTag = "<img src=\"" + value  + "\" />";
             var selector = "#"+key+"-favicon";
-            jQuery(selector).empty().append(img).fadeIn();
+            jQuery(selector).empty().html($imgTag).fadeIn();
         });
     }
 })(jQuery);
@@ -100,7 +99,7 @@ jQuery(document).ready(function() {
           jQuery(this)
               .siblings('input[type="file"]')
               .trigger('click');
-          //console.debug("fired hook on button input %s", jQuery(this).attr('id'));
+          console.debug("fired hook on button input %s", jQuery(this).attr('id'));
         });
       }
 
@@ -125,23 +124,16 @@ jQuery(document).ready(function() {
 
         var fileInputs = form.find('input[type="file"]');
 
-        //console.debug("added hook to file inputs");
+        console.debug("added hook to file inputs");
         fileInputs.change(function () {
-          if (this.files.length) {
             jQuery(this)
                 .siblings('input[type="text"]')
-                .val(this.files[0].name);
-            //console.debug("fired hook on file input %s", jQuery(this).attr('id'));
-
-          } else {
-            jQuery(this)
-                .siblings('input[type="text"]')
-                .val('');
-          }
-
+                .val(jQuery(this)
+                .val());
+            console.debug("fired hook on file input %s", jQuery(this).attr('id'));
         });
         fileInputs.click(function() {
-          //console.debug("click on file input %s", jQuery(this).attr('id'));
+          console.debug("click on file input %s", jQuery(this).attr('id'));
         });
     }
 })(jQuery);

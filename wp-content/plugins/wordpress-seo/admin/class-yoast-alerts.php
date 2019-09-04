@@ -6,64 +6,27 @@
  */
 
 /**
- * Class Yoast_Alerts.
+ * Class Yoast_Alerts
  */
 class Yoast_Alerts {
 
-	/**
-	 * Holds the admin page's ID.
-	 *
-	 * @var string
-	 */
 	const ADMIN_PAGE = 'wpseo_dashboard';
 
-	/**
-	 * Total notifications count.
-	 *
-	 * @var int
-	 */
+	/** @var int Total notifications count */
 	private static $notification_count = 0;
 
-	/**
-	 * All error notifications.
-	 *
-	 * @var array
-	 */
+	/** @var array All error notifications */
 	private static $errors = array();
-
-	/**
-	 * Active errors.
-	 *
-	 * @var array
-	 */
+	/** @var array Active errors */
 	private static $active_errors = array();
-
-	/**
-	 * Dismissed errors.
-	 *
-	 * @var array
-	 */
+	/** @var array Dismissed errors */
 	private static $dismissed_errors = array();
 
-	/**
-	 * All warning notifications.
-	 *
-	 * @var array
-	 */
+	/** @var array All warning notifications */
 	private static $warnings = array();
-
-	/**
-	 * Active warnings.
-	 *
-	 * @var array
-	 */
+	/** @var array Active warnings */
 	private static $active_warnings = array();
-
-	/**
-	 * Dismissed warnings.
-	 *
-	 * @var array
-	 */
+	/** @var array Dismissed warnings */
 	private static $dismissed_warnings = array();
 
 	/**
@@ -93,7 +56,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Enqueue assets.
+	 * Enqueue assets
 	 */
 	public function enqueue_assets() {
 
@@ -102,7 +65,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Handle ajax request to dismiss an alert.
+	 * Handle ajax request to dismiss an alert
 	 */
 	public function ajax_dismiss_alert() {
 
@@ -118,7 +81,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Handle ajax request to restore an alert.
+	 * Handle ajax request to restore an alert
 	 */
 	public function ajax_restore_alert() {
 
@@ -134,25 +97,23 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Create AJAX response data.
+	 * Create AJAX response data
 	 *
 	 * @param string $type Alert type.
 	 */
 	private function output_ajax_response( $type ) {
 
 		$html = $this->get_view_html( $type );
-		// phpcs:disable WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
-		echo WPSEO_Utils::format_json_encode(
+		echo wp_json_encode(
 			array(
 				'html'  => $html,
 				'total' => self::get_active_alert_count(),
 			)
 		);
-		// phpcs:enable -- Reason: WPSEO_Utils::format_json_encode is safe.
 	}
 
 	/**
-	 * Get the HTML to return in the AJAX request.
+	 * Get the HTML to return in the AJAX request
 	 *
 	 * @param string $type Alert type.
 	 *
@@ -174,11 +135,7 @@ class Yoast_Alerts {
 		// Re-collect alerts.
 		self::collect_alerts();
 
-		/**
-		 * Stops PHPStorm from nagging about this variable being unused. The variable is used in the view.
-		 *
-		 * @noinspection PhpUnusedLocalVariableInspection
-		 */
+		/** @noinspection PhpUnusedLocalVariableInspection */
 		$alerts_data = self::get_template_variables();
 
 		ob_start();
@@ -189,7 +146,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Extract the Yoast Notification from the AJAX request.
+	 * Extract the Yoast Notification from the AJAX request
 	 *
 	 * @return null|Yoast_Notification
 	 */
@@ -202,22 +159,18 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Show the alerts overview page.
+	 * Show the alerts overview page
 	 */
 	public static function show_overview_page() {
 
-		/**
-		 * Stops PHPStorm from nagging about this variable being unused. The variable is used in the view.
-		 *
-		 * @noinspection PhpUnusedLocalVariableInspection
-		 */
+		/** @noinspection PhpUnusedLocalVariableInspection */
 		$alerts_data = self::get_template_variables();
 
 		include WPSEO_PATH . 'admin/views/alerts-dashboard.php';
 	}
 
 	/**
-	 * Collect the alerts and group them together.
+	 * Collect the alerts and group them together
 	 */
 	public static function collect_alerts() {
 
@@ -236,7 +189,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Get the variables needed in the views.
+	 * Get the variables needed in the views
 	 *
 	 * @return array
 	 */
@@ -261,7 +214,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Get the number of active alerts.
+	 * Get the number of active alerts
 	 *
 	 * @return int
 	 */
@@ -271,7 +224,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Filter out any non-errors.
+	 * Filter out any non-errors
 	 *
 	 * @param Yoast_Notification $notification Notification to test.
 	 *
@@ -283,7 +236,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Filter out any non-warnings.
+	 * Filter out any non-warnings
 	 *
 	 * @param Yoast_Notification $notification Notification to test.
 	 *
@@ -295,7 +248,7 @@ class Yoast_Alerts {
 	}
 
 	/**
-	 * Filter out any dismissed notifications.
+	 * Filter out any dismissed notifications
 	 *
 	 * @param Yoast_Notification $notification Notification to test.
 	 *

@@ -1,24 +1,22 @@
-=== Advanced noCaptcha & invisible Captcha (v2 & v3) ===
+=== Advanced noCaptcha & invisible Captcha ===
 Contributors: shamim51
-Tags: recaptcha,nocaptcha,invisible,no captcha,bot,spam,captcha,woocommerce captcha,woocommerce nocaptcha, woocommerce,widget,plugin,sidebar,shortcode,page,posts,comments,google,bbpress,multisite,multiple,v2,v3
-Donate link: https://www.shamimsplugins.com/products/advanced-nocaptcha-and-invisible-captcha-pro/
+Tags: recaptcha,nocaptcha,invisible,no captcha,bot,spam,captcha,woocommerce captcha,woocommerce nocaptcha, woocommerce,widget,plugin,sidebar,shortcode,page,posts,comments,google,bbpress,multisite,multiple
+Donate link: https://www.paypal.me/hasanshamim
 Requires at least: 4.4
-Tested up to: 5.2
-Stable tag: 5.5
+Tested up to: 4.9.7
+Stable tag: 2.7
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Show noCaptcha or invisible captcha in Comment (after Comment textarea before submit button), CF7, bbpress, BuddyPress, woocommerce, Login, Register, Lost & Reset Password.
+Show noCaptchan or invisible captcha in Comment (after Comment textarea before submit button), CF7, bbpress, woocommerce, Login, Register, Lost & Reset Password.
 
 == Description ==
 
-Show noCaptcha or invisible captcha in Comment Form (after Comment textarea before submit button), Contact Form 7, bbPress, BuddyPress, woocommerce, Login, Register, Lost Password, Reset Password. Also can implement in any other form easily.
+Show noCaptcha or invisible captcha in Comment Form (after Comment textarea before submit button), Contact Form 7, bbPress, woocommerce, Login, Register, Lost Password, Reset Password. Also can implement in any other form easily.
 
 * **Allow multiple captcha in same page.**
 * **Allow conditional login captcha** (you can set after how many failed login attempts login captcha will show)
-
-> [For **Advanced noCaptcha & invisible Captcha PRO** click here](https://www.shamimsplugins.com/products/advanced-nocaptcha-and-invisible-captcha-pro/?utm_campaign=wordpress&utm_source=readme_pro&utm_medium=description)
 
 = Show noCaptcha on =
 
@@ -33,16 +31,14 @@ Show noCaptcha or invisible captcha in Comment Form (after Comment textarea befo
 * FEP Contact Form
 * bbPress New topic
 * bbPress reply to topic
-* BuddyPress register
 
 = Options =
 
-* You can select which version of reCaptcha will be used (v2 I'm not robot checkbox, v2 invisible or v3)
 * Language can be changed
+* Theme can be changed
+* Size can be changed or set as invisible
+* Badge location can be changed
 * Error message can be changed
-* For v2 I'm not robot: Theme, Size can be changed.
-* For v2 Invisible: Theme, badge location can be changed.
-* For v3: Score and when to load script can be changed
 * Option to show/hide captcha for logged in users
 * Captcha will show if javascript disabled also (optional)
 
@@ -65,15 +61,12 @@ Yes. this plugin is translate ready. But If your language is not available you c
 = Can i show multiple captcha in same page? =
 Yes. You can show unlimited number of captcha in same page.
 
-= How to load reCaptcha v3 script only when there is form in that page? =
-Loading v3 script in All Pages help google for analytics. If you want to load script only when there is form in that page please go to Dashboard > Settings > Advanced noCaptcha & invisible Captcha > v3 Script Load and set to "Form Pages".
-If you are not using v3 then script will only load when there is form in that page. no settings required.
+= How to set Invisible captcha? =
+Make sure to obtain key for invisible captcha from google. Go to Dashboard > Settings > Advanced noCaptcha & invisible captcha > Size ( Set as Invisible )
 
 = How to set captcha in contact form 7? =
 To show noCaptcha use [anr_nocaptcha g-recaptcha-response]
 
-= How to login if i am locked out? =
-You can access your file via FTP or file manager and rename "advanced-nocaptcha-recaptcha" folder to something else. Then login as normal. Then rename back this folder.
 
 == Screenshots ==
 
@@ -87,64 +80,6 @@ You can access your file via FTP or file manager and rename "advanced-nocaptcha-
 8. Advanced noCaptcha reCaptcha Setup Instruction
 
 == Changelog ==
-
-= 5.5 =
-
-* Fix: Multisite site signup during registration failed due to double verification.
-* Fix: Comment reply failed from back-end.
-
-= 5.4 =
-
-* Use js for loop instead of php for loop
-* Use number_formate_i18n to translate float
-* Tested upto updated.
-
-= 5.3 =
-
-* Fix: Compatibility issue with reCaptcha v3 and CF7 version 5.1 & 5.1.1
-
-= 5.2 =
-
-* Now support reCaptcha v3 also
-* Fix: invisible captcha sometimes was not working
-* anr_verify_captcha filter added
-
-= 4.4 =
-
-* PRO version released
-* anr_verify_captcha_pre filter added
-* anr_get_option filter added
-
-= 4.3 =
-
-* Reset captcha if CF7 validation error occur
-* Changed Tested up to
-
-= 4.2 =
-
-* BuddyPress mentioned in readme
-* WooCommerce checkout captcha sometimes did not verify
-* Reset captcha if WooCommerce checkout error occur
-* If WordPress version is 4.9.0 or greater then pre_comment_approved filter used for comment which we can now return WP_Error
-
-= 4.1 =
-
-* Settings page redesigned.
-* anr_is_form_enabled function added
-* Captcha error show first before username password error. So if captcha is not validated then username password error is not shown.
-* enqueue login css only if normal captcha is shown
-* Enabled forms stored as an array in db. array key is enabled_forms
-* Add class ANR_Settings, removed class anr_admin_class
-* BuddyPress register captcha added
-
-= 3.1 =
-
-* Sometimes fatal error if is_admin return true in front-end.
-* Do not show captcha in checkout if not checked for checkout.
-
-= 2.8 =
-
-* Now show captcha when use wp_login_form() function to create login form.
 
 = 2.7 =
 

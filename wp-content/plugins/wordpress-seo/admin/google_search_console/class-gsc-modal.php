@@ -10,25 +10,13 @@
  */
 class WPSEO_GSC_Modal {
 
-	/**
-	 * Path to the modal view.
-	 *
-	 * @var string
-	 */
+	/** @var string */
 	protected $view;
 
-	/**
-	 * The modal height.
-	 *
-	 * @var int
-	 */
+	/** @var int  */
 	protected $height;
 
-	/**
-	 * Variables to be passed to the view.
-	 *
-	 * @var array
-	 */
+	/** @var array */
 	protected $view_vars;
 
 	/**

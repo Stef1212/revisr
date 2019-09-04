@@ -6,21 +6,17 @@
  */
 
 /**
- * This class provides data for the post metabox by return its values for localization.
+ * This class provides data for the post metabox by return its values for localization
  */
 class WPSEO_Post_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface {
 
 	/**
-	 * Holds the WordPress Post.
-	 *
 	 * @var WP_Post
 	 */
 	private $post;
 
 	/**
-	 * The permalink to follow.
-	 *
-	 * @var string
+	 * @var string The permalink to follow.
 	 */
 	private $permalink;
 
@@ -64,7 +60,7 @@ class WPSEO_Post_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 	}
 
 	/**
-	 * Returns the url to search for keyword for the post.
+	 * Returns the url to search for keyword for the post
 	 *
 	 * @return string
 	 */
@@ -73,7 +69,7 @@ class WPSEO_Post_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 	}
 
 	/**
-	 * Returns the url to edit the taxonomy.
+	 * Returns the url to edit the taxonomy
 	 *
 	 * @return string
 	 */
@@ -82,7 +78,7 @@ class WPSEO_Post_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 	}
 
 	/**
-	 * Returns a base URL for use in the JS, takes permalink structure into account.
+	 * Returns a base URL for use in the JS, takes permalink structure into account
 	 *
 	 * @return string
 	 */
@@ -196,7 +192,7 @@ class WPSEO_Post_Metabox_Formatter implements WPSEO_Metabox_Formatter_Interface 
 	}
 
 	/**
-	 * Determines the date to be displayed in the snippet preview.
+	 * Determines the date to be displayed in the snippet preview
 	 *
 	 * @return string
 	 */
